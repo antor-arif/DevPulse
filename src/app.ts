@@ -10,6 +10,10 @@ const app = express();
 app.use(cors({ origin: process.env.CORS_ORIGIN || "*" }));
 app.use(express.json());
 
+app.get('/', (_req: Request, res: Response) => {
+  res.status(StatusCodes.OK).json({ success: true, message: 'DevPulse API is running' });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/issues', issuesRoutes);
 
